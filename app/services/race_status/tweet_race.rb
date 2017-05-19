@@ -40,7 +40,7 @@ module RaceStatus
     def tweet_metrics
       num = Workout.all.count
       quote = msg_quotes[num.to_s]
-      @msg = "#{quote} I've run another #{distance} miles in #{speed} minutes, at #{pace} minutes per mile #Chicago #HalfMarathon"
+      @msg = "#{quote} I've run another #{distance} miles in #{speed} minutes, at #{pace} minutes per mile #ChiSpringHalf #RunCHI"
       Twitter::TwitterAPI.new.tweet(msg)
       create_tweet
       Workout.last.update(tweet_id: Tweet.last.id)
