@@ -7,15 +7,14 @@ module UnderArmour
     def fetch_workouts
       response = HTTParty.get(url, payload)
       response = JSON.parse(response.body)
-      # workouts
       response['_embedded']['workouts']
     end
 
     private
 
     def endpoint
-      # start_date = (DateTime.new(2017, 5, 20, 0, 0, 0)).iso8601
-      start_date = (DateTime.new(2017, 4, 3, 0, 0, 0)).iso8601
+      start_date = (DateTime.new(2017, 5, 20, 0, 0, 0)).iso8601
+      # start_date = (DateTime.new(2017, 4, 3, 0, 0, 0)).iso8601
       "workout/?user=#{user_id}&started_after=#{start_date}&order_by=start_datetime"
     end
 

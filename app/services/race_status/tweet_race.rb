@@ -38,15 +38,21 @@ module RaceStatus
     end
 
     def tweet_metrics
-      quote = msg_quotes.sample
-      @msg = "#{quote} I've run another #{distance} miles in #{speed} minutes, at #{pace} minutes per mile"
+      num = Workout.all.count
+      quote = msg_quotes[num.to_s]
+      @msg = "#{quote} I've run another #{distance} miles in #{speed} minutes, at #{pace} minutes per mile #Chicago #HalfMarathon"
       Twitter::TwitterAPI.new.tweet(msg)
       create_tweet
       Workout.last.update(tweet_id: Tweet.last.id)
     end
 
     def msg_quotes
-      ['Going Strong!', 'Feeling Good!', 'Ready to Go!']
+      {
+        '1' => 'Feeling good!',
+        '2' => 'Almost halfway through!',
+        '3' => 'Going strong!',
+        '4' => 'Last few miles!'
+      }
     end
 
     def create_tweet
