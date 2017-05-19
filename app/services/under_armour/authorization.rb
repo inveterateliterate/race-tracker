@@ -2,23 +2,18 @@ module UnderArmour
   class Authorization
     include UnderArmourAPIWrapper
 
-    attr_reader :code
+    attr_reader :code, :access_token, :user_id
 
     def authorize
-      post
+      response = post
+      @access_token = response.parsed_response['access_token']
+      @user_id = response.parsed_response['user_id']
     end
 
     private
 
     def endpoint
       'oauth2/uacf/access_token/'
-    end
-
-    def payload
-      {
-        body: data,
-        headers: headers
-      }
     end
 
     def headers

@@ -22,7 +22,6 @@ gem 'neat'
 gem 'faker'
 gem 'simple_form'
 gem 'twitter'
-gem 'token_master'
 gem 'httparty'
 
 

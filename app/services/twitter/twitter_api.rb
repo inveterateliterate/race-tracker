@@ -11,8 +11,8 @@ module Twitter
       end
     end
 
-    def tweet
-      client.update('new tweet!')
+    def tweet(msg)
+      client.update(msg)
     end
   end
 end

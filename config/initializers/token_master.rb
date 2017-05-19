@@ -1,4 +1,4 @@
-TokenMaster.config do |config|
+# TokenMaster.config do |config|
  # Set up your configurations for each tokenable using the methods at the bottom of this file
   # TokenMaster::Config::DEFAULT_VALUES =
   #     {
@@ -13,5 +13,5 @@ TokenMaster.config do |config|
   # config.add_tokenable_options :foo, token_lifetime: 10, required_params: [:email, token_length: config.DEFAULT_VALUES[:token_length]
 
   #### METHODS FOR YOUR CONFIGURATION BELOW ###
-  config.add_tokenable_options :reset, TokenMaster::Config::DEFAULT_VALUES
-end
+#   config.add_tokenable_options :reset, TokenMaster::Config::DEFAULT_VALUES
+# end

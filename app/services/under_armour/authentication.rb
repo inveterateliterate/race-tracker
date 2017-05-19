@@ -11,9 +11,7 @@ module UnderArmour
     end
 
     def redirect_uri
-      # update with heroku
-      "#{Rails.root}/callback"
-      # 'http://lvh.me:3000/callback'
+      "http://#{ENV['APPLICATION_ROOT_URL']}/callback"
     end
 
     def base_url

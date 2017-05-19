@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519131633) do
+ActiveRecord::Schema.define(version: 20170519164556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20170519131633) do
     t.datetime "reset_created_at"
     t.datetime "reset_sent_at"
     t.datetime "reset_completed_at"
+    t.string   "access_token"
+    t.string   "ua_user_id"
     t.index ["reset_token"], name: "index_users_on_reset_token", using: :btree
   end
 

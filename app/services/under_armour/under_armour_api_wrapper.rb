@@ -12,11 +12,11 @@ module UnderArmour
       HTTParty.post(url, payload)
     end
 
-    private
-
     def url
       "#{base_url}#{endpoint}"
     end
+
+    private
 
     def client_id
       ENV['UA_API_KEY']
@@ -27,7 +27,7 @@ module UnderArmour
     end
 
     def base_url
-      "https://www.api.ua.com/v7.1/"
+      'https://api.ua.com/v7.1/'
     end
 
     def endpoint
@@ -35,10 +35,17 @@ module UnderArmour
     end
 
     def payload
-      {}
+      {
+        body: data,
+        headers: headers
+      }
     end
 
     def data
+      {}
+    end
+
+    def headers
       {}
     end
 
