@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ignore bundler config.
 /.bundle
 
@@ -7,5 +8,12 @@
 !/log/.keep
 !/tmp/.keep
 
-# Ignore Byebug command history file.
 .byebug_history
+
+# Ignore application configuration
+.DS_Store
+/config/database.yml
+/config/secrets.yml
+
+# Ignore application configuration
+/config/application.yml
