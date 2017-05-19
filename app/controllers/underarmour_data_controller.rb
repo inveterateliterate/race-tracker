@@ -6,8 +6,6 @@ class UnderarmourDataController < ApplicationController
   def callback
     @code = params[:code]
     if ua_service.authorize
-      user = User.find_by(email: ENV['ADMIN_EMAIL'])
-      user.update(access_token: ua_service.access_token, ua_user_id: ua_service.user_id)
       redirect_to root_path
     else
       raise 'error retrieving access token'

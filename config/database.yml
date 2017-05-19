@@ -2,13 +2,13 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: race-tracker_development
+  database: race_tweeter_development
   pool: 5
   host: localhost
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: race-tracker_test
+  database: race_tweeter_test
   pool: 5
   host: localhost

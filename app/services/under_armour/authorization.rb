@@ -6,8 +6,11 @@ module UnderArmour
 
     def authorize
       response = post
-      @access_token = response.parsed_response['access_token']
-      @user_id = response.parsed_response['user_id']
+      access_token = response.parsed_response['access_token']
+      user_id = response.parsed_response['user_id']
+      user = User.find_by(email: ENV['ADMIN_EMAIL'])
+      user.update(access_token: access_token, ua_user_id: user_id)
+      self
     end
 
     private
