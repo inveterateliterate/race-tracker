@@ -1,18 +1,19 @@
 module RaceStatus
   class TweetRace
-    attr_reader :user, :new_workout, :ua_workouts, :distance, :speed, :pace, :msg, :all_workouts
+    attr_reader :user, :new_workout, :ua_workouts, :distance, :speed, :pace, :msg, :all_workouts, :race
 
     METERS_PER_MILE = 1609.34
 
-    def initialize
-      @user = User.first
+    def initialize(args = {})
+      @user = args[:user] || User.first
+      @race = args[:race]
     end
 
     def tweet_progress
       fetch_workouts
       confirm_new_workout
       return unless new_workout
-      workout_metrics
+      create_workout
       tweet_metrics
     end
 
@@ -30,12 +31,12 @@ module RaceStatus
       @distance = (new_workout['aggregates']['distance_total'] / METERS_PER_MILE).round(2)
       @speed = (new_workout['aggregates']['active_time_total'] / 60).round(2)
       @pace = (speed / distance).round(2)
-      create_workout
-      @all_workouts = Workout.all
     end
 
     def create_workout
+      workout_metrics
       Workout.create(distance: distance, speed: speed, pace: pace, race_id: Race.first.id)
+      @all_workouts = Workout.all
     end
 
     def tweet_metrics
@@ -66,7 +67,6 @@ module RaceStatus
       all_times = all_workouts.pluck(:speed)
       (all_times.reduce(:+) + all_times.length * 0.15).round(2)
     end
-
 
     def create_tweet
       tweet = Tweet.new(date: Date.today, content: msg, user: user, race: Race.first)
