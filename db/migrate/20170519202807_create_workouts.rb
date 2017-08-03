@@ -8,6 +8,7 @@ class CreateWorkouts < ActiveRecord::Migration[5.0]
       t.float :pace
       t.integer :race_id
       t.integer :tweet_id
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
