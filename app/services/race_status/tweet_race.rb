@@ -13,7 +13,7 @@ module RaceStatus
       fetch_workouts
       confirm_new_workout
       return unless new_workout
-      creat_workout
+      create_workout
       tweet_metrics
     end
 

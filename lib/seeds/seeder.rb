@@ -22,7 +22,7 @@ module Seeds
       end
 
       def create_users
-        User.create(first_name: ENV['ADMIN_FIRST_NAME'], last_name: ENV['ADMIN_LAST_NAME'], email: ENV['ADMIN_EMAIL'])
+        User.create!(first_name: ENV['ADMIN_FIRST_NAME'], last_name: ENV['ADMIN_LAST_NAME'], email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'])
       end
     end
   end
