@@ -21,6 +21,6 @@ class UnderarmourDataController < ApplicationController
   private
 
   def ua_service
-    ua_service ||= UnderArmour::Authorization.new(code: @code)
+    UnderArmour::Authorization.new(code: @code)
   end
 end
