@@ -7,12 +7,19 @@
 !/log/.keep
 !/tmp/.keep
 
+
+/node_modules
+/yarn-error.log
 .byebug_history
 
 # Ignore application configuration
 .DS_Store
 /config/database.yml
 /config/secrets.yml
+/config/application.yml
 
 # Ignore application configuration
-/config/application.yml
+/public/packs
+/public/packs-test
+
+app/assets/webpack/*

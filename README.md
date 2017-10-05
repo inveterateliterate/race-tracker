@@ -4,7 +4,7 @@
 ## Getting Started
 ### Prerequisites
 + Ruby 2.3.3
-+ Rails 5.0
++ Rails 5.1
 + Postgres
 
 

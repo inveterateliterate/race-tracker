@@ -1,28 +1,34 @@
 source 'https://rubygems.org'
 ruby '2.3.3'
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'bcrypt', '~> 3.1.7'
+gem 'active_model_serializers'
+# gem 'bcrypt', '~> 3.1.7'
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.2'
+gem 'decanter'
+gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem 'httparty'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'mini_racer', platforms: :ruby
 gem 'neat'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.0.3'
+gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'turbolinks', '~> 5'
 gem 'twitter'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker'
+gem 'webpacker-react'
 
 group :development, :test do
   gem 'byebug', platform: :mri
