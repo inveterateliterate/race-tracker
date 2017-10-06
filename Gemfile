@@ -6,11 +6,11 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.2'
 gem 'decanter'
-gem 'devise'
+# gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem 'httparty'
@@ -23,6 +23,7 @@ gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
+gem 'token_master'
 gem 'turbolinks', '~> 5'
 gem 'twitter'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
