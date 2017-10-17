@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170803211548) do
   enable_extension "plpgsql"
 
   create_table "hashtags", id: :serial, force: :cascade do |t|
-    t.string "tag"
+    t.string "text"
     t.integer "race_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

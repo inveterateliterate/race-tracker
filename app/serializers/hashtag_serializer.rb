@@ -1,6 +1,6 @@
 class HashtagSerializer < ActiveModel::Serializer
   attributes :id,
-             :tag
+             :text
 
   belongs_to :race
 end

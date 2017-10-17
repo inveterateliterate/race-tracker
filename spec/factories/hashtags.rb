@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :hashtag do
-    tag 'RunCHI'
+    text 'RunCHI'
     race
   end
 end

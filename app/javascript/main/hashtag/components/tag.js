@@ -18,7 +18,7 @@ const defaultProps = {}
 function HashtagTag({
   tag: {
     id,
-    tag,
+    text,
   },
   onEdit,
   onDelete,
@@ -27,20 +27,23 @@ function HashtagTag({
 }) {
   return (
     <li>
+      <div className="view">
+        {
+          !editing &&
+          <label onClick={ () => setEditing(true) }>
+            { text }
+          </label>
+        }
+      </div>
       {
-        !editing &&
-        <label onDoubleClick={ () => setEditing(true) }>
-          { tag }
-        </label>
-      }
-      {editing &&
+        editing &&
         <HashtagForm
           onSubmit={ effects.updateHashtag }
           onSubmitSuccess={ tag => {
               onEdit(tag)
               setEditing(false)
           }}
-          initialValues={{ tag, id }}
+          initialValues={{ text, id }}
         />
       }
       {

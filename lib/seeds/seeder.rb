@@ -51,11 +51,11 @@ module Seeds
         Race.all.each do |race|
           hashtags << [
             {
-              tag: 'ChiSpringHalf',
+              text: 'ChiSpringHalf',
               race_id: race.id
             },
             {
-              tag: "#{race.date.year}ChiHalf",
+              text: "#{race.date.year}ChiHalf",
               race_id: race.id
             }
           ]

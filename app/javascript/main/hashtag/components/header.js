@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { HeaderForm } from '../forms'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
 import * as effects from '../../effects'
-import * as actions from '../actions'
 
 const propTypes = {
   onCreate: PropTypes.func,

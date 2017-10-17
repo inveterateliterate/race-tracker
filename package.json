@@ -4,6 +4,7 @@
   "scripts": {
     "start": "bundle && yarn install && foreman start -f Procfile.dev",
     "lint": "eslint app/javascript --max-warnings=0",
+    "cypress": "cypress run",
     "server": "./bin/webpack-dev-server"
   },
   "dependencies": {

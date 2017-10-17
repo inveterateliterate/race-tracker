@@ -23,16 +23,16 @@ const reducer = handleActions({
     const tagCollection = getOr([], 'hashtags.success', state)
     return set('hashtags.success', [...tagCollection, newTag], state)
   },
-  [actions.updateHashtag]: (state, { payload: { id, tag } }) => {
+  [actions.updateHashtag]: (state, { payload: { id, text } }) => {
     const tagCollection = getOr([], 'hashtags.success', state)
-    const newTagCollection = tagCollection.map(t => {
-      return (t.id === id) ? { ...t, tag } : t
+    const newTagCollection = tagCollection.map(tag => {
+      return (tag.id === id) ? { ...tag, text } : tag
     })
     return set('hashtags.success', newTagCollection, state)
   },
   [actions.destroyHashtag]: (state, { payload: id }) => {
     const tagCollection = getOr([], 'hashtags.success', state)
-    const newTagCollection = tagCollection.filter(t => t.id !== id)
+    const newTagCollection = tagCollection.filter(tag => tag.id !== id)
     return set('hashtags.success', newTagCollection, state)
   }
 }, initialState)
