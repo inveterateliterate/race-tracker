@@ -3,7 +3,7 @@ $stdout.sync = true
 
 require 'shellwords'
 require 'yaml'
-require 'socket'
+# require 'socket'
 
 ENV['RAILS_ENV'] ||= 'development'
 RAILS_ENV = ENV['RAILS_ENV']

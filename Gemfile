@@ -10,17 +10,17 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.2'
 gem 'decanter'
-# gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem 'httparty'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'mini_racer', platforms: :ruby
+gem 'lp_token_auth', github: 'launchpadlab/lp_token_auth'
 gem 'neat'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.1.4'
+gem 'rails_util', github: 'launchpadlab/rails_util'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'token_master'
@@ -48,6 +48,7 @@ end
 
 group :test do
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
   gem 'rspec-collection_matchers'
   gem 'shoulda-matchers', '~> 3.1'
 end

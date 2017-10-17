@@ -7,7 +7,6 @@
 !/log/.keep
 !/tmp/.keep
 
-
 /node_modules
 /yarn-error.log
 .byebug_history
@@ -20,6 +19,6 @@
 
 # Ignore application configuration
 /public/packs
-/public/packs-test
-
-app/assets/webpack/*
+/node_modules
+public/main
+public/packs

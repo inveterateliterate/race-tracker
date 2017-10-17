@@ -11,5 +11,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'webpack')
-Rails.application.config.assets.precompile += %w( webpack-manifest.js vendor.js main.js )
+# Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'webpack')
+# Rails.application.config.assets.precompile += %w( webpack-manifest.js vendor.js main.js )

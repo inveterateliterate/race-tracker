@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HashtagTag from './tag'
 import { compose } from 'redux'
-import { filter } from 'lodash'
+// import { filter } from 'lodash'
 import { connect } from 'react-redux'
 import { selectors } from '../reducer'
 import { onMount } from '@launchpadlab/lp-utils'
-import { selectors as apiSelectors } from '@launchpadlab/lp-redux-api'
+// import { selectors as apiSelectors } from '@launchpadlab/lp-redux-api'
 
 import * as apiActions from '../../api-actions'
 

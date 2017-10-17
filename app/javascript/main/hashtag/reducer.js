@@ -17,7 +17,7 @@ import { selectorForSlice } from '@launchpadlab/lp-utils'
 import { setFromRequest } from '@launchpadlab/lp-redux-api'
 
 const reducerKey = 'hashtag'
-const slice = 'root.hashtag'
+const slice = 'hashtag.hashtag'
 
 const updateTags = (tags, tagToUpdate) => {
   const tagIndex = getIndexOf(tags, tag => tag.id === tagToUpdate.id)

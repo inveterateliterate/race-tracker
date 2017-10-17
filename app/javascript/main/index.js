@@ -15,7 +15,7 @@ function MainApp () {
   return(
     <Provider store={ store }>
       <Router history={ browserHistory }>
-        <Route path='/' component={ HashtagShow } />
+        <Route path='/hashtag/:hashtagId' component={ HashtagShow } />
       </Router>
     </Provider>
   )

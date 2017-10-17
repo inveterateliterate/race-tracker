@@ -4,10 +4,9 @@ import { TagForm } from '../forms'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { getSetPropTypes, toggle } from '@launchpadlab/lp-utils'
-import classnames from 'classnames'
-
+// import classnames from 'classnames'
 import * as effects from '../../effects'
-import * as actions from '../../actions'
+import * as actions from '../actions'
 
 const propTypes = {
   tag: PropTypes.object.isRequired,
@@ -45,8 +44,7 @@ function HashtagTag({
           onClick={
             () => effects.destroyTag({ id: tag.id })
                          .then(destroyTag)
-          }
-        >
+          }>
         </button>
       }
     </li>
@@ -56,8 +54,8 @@ function HashtagTag({
 HashtagTag.propTypes = propTypes
 
 const mapDispatchToProps = {
-  destroyTag = actions.destroyTag,
-  editTag = actions.editTag
+  destroyTag: actions.destroyTag,
+  editTag: actions.editTag
 }
 
 export default compose(

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  root 'races#home'
+  root 'pages#home'
   resources :users
   resources :races
-  resources :hashtags
+  resources :hashtags, only: [:index, :create, :update, :destroy]
+
+  # constraints lambda { |req| req.format == :html } do
+  #   get '*any', to: 'pages#home'
+  # end
+
+  patch '/hashtags/:id/update_text' => 'hashtags#update_text'
 
   get '/index' => 'pages#index'
   get '/authenticate' => 'underarmour_data#authenticate'

@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/launchpadlab/lp_token_auth.git
+  revision: e600e83f789d5e66eae88942f7023a8d89bb73ea
+  specs:
+    lp_token_auth (0.2.5)
+      jwt (>= 1.5.6)
+
+GIT
+  remote: https://github.com/launchpadlab/rails_util.git
+  revision: 6b3abbb3436330bd7c8457311304a5adc41a4a24
+  specs:
+    rails_util (1.1.0)
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -111,7 +125,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jsonapi-renderer (0.1.3)
-    libv8 (5.9.211.38.1)
+    jwt (2.1.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -127,8 +141,6 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.3.0)
-    mini_racer (0.1.14)
-      libv8 (~> 5.9)
     minitest (5.10.3)
     multi_json (1.12.1)
     multi_xml (0.6.0)
@@ -171,6 +183,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.4)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.2)
+      actionpack (~> 5.x, >= 5.0.1)
+      actionview (~> 5.x, >= 5.0.1)
+      activesupport (~> 5.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -292,13 +308,15 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-  mini_racer
+  lp_token_auth!
   neat
   pg (~> 0.18)
   pry-nav
   pry-rails
   puma (~> 3.0)
   rails (~> 5.1.4)
+  rails-controller-testing
+  rails_util!
   rspec-collection_matchers
   rspec-rails
   sass-rails (~> 5.0)

@@ -42,8 +42,7 @@ module.exports = {
   'settings': {
     'import/resolver': {
       'webpack': {
-        'config': __dirname + '/config/webpack.config.js',
-        // "settings": { "import/resolver": { "node": { "paths": ["./node_modules"] } } }
+        'config': __dirname + '/config/webpack/development.js',
       }
     }
   }
