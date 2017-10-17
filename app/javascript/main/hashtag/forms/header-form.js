@@ -23,9 +23,10 @@ function HeaderForm({ handleSubmit, invalid, pristine, submitting}) {
   return (
     <form onSubmit={ handleSubmit }>
       <Field
-        name='text'
+        name='tag'
         component={Input}
         className='new-hashtag'
+        label='Add Hashtag'
       >
       </Field>
       <ButtonArea>

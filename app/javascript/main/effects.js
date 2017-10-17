@@ -2,7 +2,7 @@ import { api } from './api'
 // import { SubmissionError } from 'redux-form'
 
 export function createHashtag(hashtag) {
-  return api.post('/hashtags/create', { hashtag })
+  return api.post('/hashtags', { hashtag })
 }
 
 export function updateHashtag(id, params) {

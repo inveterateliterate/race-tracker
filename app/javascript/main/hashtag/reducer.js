@@ -5,7 +5,7 @@ import {
   getOr
 } from '../../utils'
 
-// import { createSelector } from 'reselect'
+import { createSelector } from 'reselect'
 import { handleActions } from 'redux-actions'
 import { selectorForSlice } from '@launchpadlab/lp-utils'
 import { setFromRequest } from '@launchpadlab/lp-redux-api'
@@ -42,5 +42,12 @@ const select = selectorForSlice(slice)
 const selectors = {
   tags: select('hashtags.success', []),
 }
+
+selectors.displayedTags = createSelector(
+  [selectors.tags],
+  function (tags) {
+    return tags
+  }
+)
 
 export { reducer, reducerKey, selectors }

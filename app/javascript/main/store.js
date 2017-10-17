@@ -18,7 +18,7 @@ function initializeStore () {
 
   const enhancers = composeEnhancers(
     applyMiddleware(
-      apiMiddleware.
+      apiMiddleware,
       thunkMiddleware
     )
   )

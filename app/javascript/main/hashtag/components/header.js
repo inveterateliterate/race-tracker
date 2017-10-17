@@ -10,7 +10,7 @@ const propTypes = {
   onCreate: PropTypes.func,
 }
 
-defaultProps = {}
+const defaultProps = {}
 
 function HashtagHeader({
   onCreate
