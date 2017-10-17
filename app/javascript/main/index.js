@@ -1,22 +1,8 @@
-import React from 'react'
 import WebpackerReact from 'webpacker-react'
-import { Route, Router, browserHistory } from 'react-router'
-import initializeStore from './store'
-import { Provider } from 'react-redux'
-import { views } from './hashtag'
+import Routes from './routes'
 
-const store = initializeStore()
+/*
+ * Register the app so WebpackerReact can find it
+ */
 
-WebpackerReact.setup({ MainApp })
-
-const HashtagShow = views.HashtagShow
-
-function MainApp () {
-  return(
-    <Provider store={ store }>
-      <Router history={ browserHistory }>
-        <Route path='/hashtag/:hashtagId' component={ HashtagShow } />
-      </Router>
-    </Provider>
-  )
-}
+WebpackerReact.setup({ MainApp: Routes })

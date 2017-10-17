@@ -1,6 +1,6 @@
-class CreateHashTags < ActiveRecord::Migration[5.0]
+class CreateHashtags < ActiveRecord::Migration[5.0]
   def change
-    create_table :hash_tags do |t|
+    create_table :hashtags do |t|
       t.string :tag
       t.references :race, foreign_key: true
 

@@ -1,3 +1,1 @@
-import HashtagShow from './hashtag-show'
-
-export default { HashtagShow }
+export { default as Hashtag } from './hashtag'

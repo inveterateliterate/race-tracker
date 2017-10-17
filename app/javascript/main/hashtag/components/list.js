@@ -1,30 +1,31 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import HashtagTag from './tag'
-import { compose } from 'redux'
-// import { filter } from 'lodash'
-import { connect } from 'react-redux'
-import { selectors } from '../reducer'
-import { onMount } from '@launchpadlab/lp-utils'
-// import { selectors as apiSelectors } from '@launchpadlab/lp-redux-api'
-
-import * as apiActions from '../../api-actions'
 
 const propTypes = {
   tags: PropTypes.array.isRequired,
-  list: PropTypes.string.isRequired
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 }
+
+const defaultProps = {}
 
 function HashtagList({
   tags,
-  list
+  onEdit,
+  onDelete,
 }) {
   return (
     <ul className="hashtag-list">
-      { list === 'all' &&
-        tags.map((tag, i) => {
-          return <HashtagTag key={ i } tag={ tag } />
-        })
+      {
+        tags.map(tag =>
+          <HashtagTag
+            key={ tag.id }
+            tag={ tag }
+            onEdit={ onEdit }
+            onDelete={ onDelete }
+          />
+        )
       }
     </ul>
   )
@@ -32,18 +33,6 @@ function HashtagList({
 
 HashtagList.propTypes = propTypes
 
-const mapStateToProps = (state) => {
-  return {
-    list: selectors.list(state),
-    tags: selectors.items(state)
-  }
-}
+HashtagList.defaultProps = defaultProps
 
-const mapDispatchToProps = {
-  fetchHashtags: apiActions.fetchHashtags
-}
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  onMount('fetchHashtags')
-)(HashtagList)
+export default HashtagList

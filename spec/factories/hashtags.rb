@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :hash_tag do
+  factory :hashtag do
     tag 'RunCHI'
     race
   end

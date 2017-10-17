@@ -1,2 +1,2 @@
-export { default as views } from './views'
+export { default as routes } from './routes'
 export { reducer, reducerKey } from './reducer'

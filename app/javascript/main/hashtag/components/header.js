@@ -7,33 +7,27 @@ import * as effects from '../../effects'
 import * as actions from '../actions'
 
 const propTypes = {
-  createTag: PropTypes.func,
+  onCreate: PropTypes.func,
 }
 
+defaultProps = {}
+
 function HashtagHeader({
-  createTag
+  onCreate
 }) {
    return (
-    <header className="header">
-      <h1>HashTags</h1>
-      <HeaderForm
-         onSubmit={ effects.createHashtag }
-         onSubmitSuccess={
-          (tag, _, { reset }) => {
-            createTag(tag)
-            reset()
-         }}
-      />
-    </header>
+    <HeaderForm
+       onSubmit={ effects.createHashtag }
+       onSubmitSuccess={
+        (tag, _, { reset }) => {
+          onCreate(tag)
+          reset()
+       }}
+    />
   )
 }
 
 HashtagHeader.propTypes = propTypes
+HashtagHeader.defaultProps = defaultProps
 
-const mapDispatchToProps = {
-  createItem: actions.createHashtag
-}
-
-export default compose(
-  connect(null, mapDispatchToProps)
-)(HashtagHeader)
+export default HashtagHeader

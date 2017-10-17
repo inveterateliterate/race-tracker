@@ -1,50 +1,54 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { TagForm } from '../forms'
+import { HashtagForm } from '../forms'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import { getSetPropTypes, toggle } from '@launchpadlab/lp-utils'
+import { togglePropTypes, toggle } from '@launchpadlab/lp-utils'
 // import classnames from 'classnames'
 import * as effects from '../../effects'
-import * as actions from '../actions'
 
 const propTypes = {
   tag: PropTypes.object.isRequired,
-  editTag: PropTypes.func.isRequired,
-  destroyTag: PropTypes.func.isRequired,
-  editingActive: PropTypes.bool,
-  setEditing: PropTypes.func,
-  ...getSetPropTypes('inputValue')
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  ...togglePropTypes('editing')
 }
 
+const defaultProps = {}
+
 function HashtagTag({
-  tag,
-  editTag,
-  destroyTag,
-  editingActive,
+  tag: {
+    id,
+    tag,
+  },
+  onEdit,
+  onDelete,
+  editing,
   setEditing,
 }) {
   return (
     <li>
-      {editingActive &&
-        <TagForm
+      {
+        !editing &&
+        <label onDoubleClick={ () => setEditing(true) }>
+          { tag }
+        </label>
+      }
+      {editing &&
+        <HashtagForm
           onSubmit={ effects.updateHashtag }
-          onSubmitSuccess={
-            (tag) => {
-              editTag(tag)
-              setEditing(false) }
-            }
-          initialValues={{ tag: tag.tag, id: tag.id }}
+          onSubmitSuccess={ tag => {
+              onEdit(tag)
+              setEditing(false)
+          }}
+          initialValues={{ tag, id }}
         />
       }
-
-      {!editingActive &&
+      {
+        !editing &&
         <button
           className='destroy'
-          onClick={
-            () => effects.destroyTag({ id: tag.id })
-                         .then(destroyTag)
-          }>
+          onClick={ () => effects.destroyHashtag({ id }).then(() => onDelete(id)) }
+        >
         </button>
       }
     </li>
@@ -52,14 +56,9 @@ function HashtagTag({
 }
 
 HashtagTag.propTypes = propTypes
-
-const mapDispatchToProps = {
-  destroyTag: actions.destroyTag,
-  editTag: actions.editTag
-}
+HashtagTag.defaultProps = defaultProps
 
 export default compose(
-  connect(null, mapDispatchToProps),
   toggle('editing')
 )(HashtagTag)
 

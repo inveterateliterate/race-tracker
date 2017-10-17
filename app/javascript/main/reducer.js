@@ -5,7 +5,7 @@ import {
   reducerKey as hashtagReducerKey
 } from './hashtag'
 
-const reducerKey = 'hashtag'
+const reducerKey = 'root'
 
 const reducer = combineReducers({
   [hashtagReducerKey]: hashtagReducer
