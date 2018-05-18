@@ -11,7 +11,7 @@ module UnderArmour
     end
 
     def redirect_uri
-      "http://#{ENV['APPLICATION_ROOT_URL']}/callback"
+      "#{ENV['APPLICATION_ROOT_URL']}/callback"
     end
 
     def base_url

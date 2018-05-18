@@ -16,7 +16,7 @@ module UnderArmour
     private
 
     def endpoint
-      'oauth2/uacf/access_token/'
+      'v7.1/oauth2/uacf/access_token/'
     end
 
     def headers

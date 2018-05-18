@@ -5,7 +5,7 @@ module UnderArmour
     attr_reader :token, :user_id
 
     def fetch_workouts
-      response = HTTParty.get(url, payload)
+      response = get
       response = JSON.parse(response.body)
       response['_embedded']['workouts']
     end
@@ -14,7 +14,7 @@ module UnderArmour
 
     def endpoint
       start_date = (DateTime.new(2018, 5, 16, 0, 0, 0)).iso8601
-      "workout/?user=#{user_id}&started_after=#{start_date}&order_by=start_datetime"
+      "v7.2/workout/?user=#{user_id}&started_after=#{start_date}&order_by=start_datetime"
     end
 
     def headers
