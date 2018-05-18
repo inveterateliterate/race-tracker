@@ -14,7 +14,6 @@ module UnderArmour
 
     def endpoint
       start_date = (DateTime.new(2018, 5, 16, 0, 0, 0)).iso8601
-      # start_date = (DateTime.new(2017, 4, 3, 0, 0, 0)).iso8601
       "workout/?user=#{user_id}&started_after=#{start_date}&order_by=start_datetime"
     end
 

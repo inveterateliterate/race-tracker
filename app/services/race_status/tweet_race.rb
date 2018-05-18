@@ -1,18 +1,18 @@
 module RaceStatus
   class TweetRace
-    attr_reader :user, :new_workout, :ua_workouts, :distance, :speed, :pace, :msg, :all_workouts, :race
+    attr_reader :user, :race, :ua_workouts, :metrics, :all_workouts, :msg
 
     METERS_PER_MILE = 1609.34
 
     def initialize(args = {})
-      @user = args[:user] || User.first
+      @user = args[:user]
+      raise 'user is required' unless user
       @race = args[:race]
     end
 
     def tweet_progress
       fetch_workouts
-      confirm_new_workout
-      return unless new_workout
+      return unless new_workout?
       create_workout
       tweet_metrics
     end
@@ -23,30 +23,34 @@ module RaceStatus
       @ua_workouts = UnderArmour::ActivityData.new(user: user).fetch_workouts
     end
 
-    def confirm_new_workout
-      @new_workout = ua_workouts.count > Workout.all.count ? ua_workouts.last : nil
-    end
-
-    def workout_metrics
-      @distance = (new_workout['aggregates']['distance_total'] / METERS_PER_MILE).round(2)
-      @speed = (new_workout['aggregates']['active_time_total'] / 60).round(2)
-      @pace = (speed / distance).round(2)
+    def new_workout?
+      ua_workouts.count > Workout.all.count
     end
 
     def create_workout
       workout_metrics
-      Workout.create(distance: distance, speed: speed, pace: pace, race_id: Race.first.id)
+      Workout.create(distance: metrics[:distance], speed: metrics[:speed], pace: metrics[:pace], race_id: race.try(:id), user_id: user.id)
       @all_workouts = Workout.all
+    end
+
+    def workout_metrics
+      new_workout = ua_workouts.last
+      @metrics = {
+        distance: (new_workout['aggregates']['distance_total'] / METERS_PER_MILE).round(2),
+        speed: (new_workout['aggregates']['active_time_total'] / 60).round(2)
+      }
+      @metrics[:pace] = (metrics[:speed] / metrics[:distance]).round(2)
+      @metrics
     end
 
     def tweet_metrics
       num = all_workouts.count
       quote = msg_quotes[num.to_s]
 
-      @msg = "#{quote} at a pace of #{pace} minutes per mile #ChiSpringHalf #RunCHI"
+      @msg = "#{quote} at a pace of #{metrics[:pace]} minutes per mile #ChiSpringHalf #RunCHI"
       Twitter::TwitterAPI.new.tweet(msg)
-      create_tweet
-      Workout.last.update(tweet_id: Tweet.last.id)
+      tweet = save_tweet
+      all_workouts.last.update(tweet_id: tweet.id)
     end
 
     def msg_quotes
@@ -68,9 +72,8 @@ module RaceStatus
       (all_times.reduce(:+) + all_times.length * 0.15).round(2)
     end
 
-    def create_tweet
-      tweet = Tweet.new(date: Date.today, content: msg, user: user, race: Race.first)
-      tweet.save
+    def save_tweet
+      Tweet.create(date: Date.today, content: msg, user: user, race: race)
     end
   end
 end
