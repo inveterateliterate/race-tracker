@@ -1,13 +1,13 @@
 module RaceStatus
   class TweetRace
     include WorkoutMetrics
+    include Messages
     attr_reader :user, :date, :race, :ua_workouts, :metrics, :todays_workouts, :msg
 
     def initialize(args = {})
+      raise 'missing required args' if missing_required_args?(args)
       @user = args[:user]
-      raise 'user is required' unless user
       @date = args[:date]
-      raise 'date is required' unless date
       @race = args[:race]
     end
 
@@ -40,30 +40,22 @@ module RaceStatus
     end
 
     def tweet_metrics
-      num = todays_workouts.count
-      quote = msg_quotes[num.to_s]
-
-      @msg = "#{quote} at a pace of #{metrics[:pace]} minutes per mile #{formatted_tags}"
+      @msg = craft_message
       Twitter::TwitterAPI.new.tweet(msg)
       tweet = save_tweet
       todays_workouts.last.update(tweet_id: tweet.id)
     end
 
-    def formatted_tags
-      race.hash_tags.map { |tag| '#' + tag.tag }.join(' ')
-    end
-
-    def msg_quotes
-      {
-        '1' => "Feeling good! #{sum_distances(todays_workouts)} miles and #{sum_times(todays_workouts)} minutes down,",
-        '2' => "Almost halfway through! #{sum_distances(todays_workouts)} miles covered in #{sum_times(todays_workouts)} minutes,",
-        '3' => "Going strong! I've run #{sum_distances(todays_workouts)} miles in #{sum_times(todays_workouts)} minutes,",
-        '4' => "Final stretch! #{sum_distances(todays_workouts)} miles completed in #{sum_times(todays_workouts)} minutes,"
-      }
-    end
-
     def save_tweet
       Tweet.create(date: Date.today, content: msg, user: user, race: race)
+    end
+
+    def required_args
+      [:user, :date, :race]
+    end
+
+    def missing_required_args?(args)
+      required_args.any? { |r| args[r].nil? }
     end
   end
 end

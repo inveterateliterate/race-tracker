@@ -11,15 +11,14 @@ module RaceStatus
       metrics
     end
 
-    def sum_distances(workouts)
-      all_distances = workouts.pluck(:distance)
+    def sum_distances
+      all_distances = todays_workouts.pluck(:distance)
       (all_distances.reduce(:+)).round(2)
     end
 
-    def sum_times(workouts)
-      all_times = workouts.pluck(:speed)
+    def sum_times
+      all_times = todays_workouts.pluck(:speed)
       (all_times.reduce(:+) + all_times.length * 0.15).round(2)
     end
-
   end
 end
