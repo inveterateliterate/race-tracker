@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :race do
     date { Faker::Date.between(10.days.ago, Date.today) }
     name 'Chicago Spring Half Marathon'

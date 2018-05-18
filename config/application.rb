@@ -8,8 +8,8 @@ Bundler.require(*Rails.groups)
 
 module RaceTracker
   class Application < Rails::Application
-    app_folders = %w().map { |f| "app/#{f}" }
-    root_folders = %w(lib)
+    app_folders = %w[].map { |f| "app/#{f}" }
+    root_folders = %w[lib]
 
     folders = (app_folders + root_folders).map { |f| "#{config.root}/#{f}/**/" }
     config.autoload_paths   += Dir["#{config.root}/app/models/**/", "#{config.root}/lib/**/"]
@@ -17,14 +17,14 @@ module RaceTracker
     config.autoload_paths += Dir[*folders]
 
     config.generators do |g|
-      g.test_framework :rspec,
-        fixtures: true,
-        view_specs: false,
-        helper_specs: false,
-        routing_specs: false,
-        controller_specs: true,
-        request_specs: false
-      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.test_framework  :rspec,
+                        fixtures: true,
+                        view_specs: false,
+                        helper_specs: false,
+                        routing_specs: false,
+                        controller_specs: true,
+                        request_specs: false
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
     # Set Host

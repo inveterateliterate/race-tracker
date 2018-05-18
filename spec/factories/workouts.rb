@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :workout do
     start_time '7:00'
     end_time '7:30'
