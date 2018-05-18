@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_validation :downcase_email
 
   has_many :races, dependent: :destroy
+  has_many :workouts, dependent: :destroy
   has_many :tweets, dependent: :destroy
 
   validates_presence_of :first_name, :last_name, :email
