@@ -5,7 +5,7 @@ module UnderArmour
     end
 
     def get
-      HTTParty.get(url, payload)
+      HTTParty.get(url, headers: headers)
     end
 
     def post
@@ -27,7 +27,7 @@ module UnderArmour
     end
 
     def base_url
-      'https://api.ua.com/v7.1/'
+      'https://api.ua.com/'
     end
 
     def endpoint
