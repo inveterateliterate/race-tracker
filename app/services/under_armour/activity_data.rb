@@ -1,8 +1,7 @@
 module UnderArmour
   class ActivityData
     include UnderArmourAPIWrapper
-
-    attr_reader :token, :user_id
+    attr_reader :token, :user_id, :date
 
     def fetch_workouts
       response = get
@@ -13,7 +12,7 @@ module UnderArmour
     private
 
     def endpoint
-      start_date = (DateTime.new(2018, 5, 16, 0, 0, 0)).iso8601
+      start_date = (DateTime.new(date.year, date.month, date.day, 0, 0, 0)).iso8601
       "v7.2/workout/?user=#{user_id}&started_after=#{start_date}&order_by=start_datetime"
     end
 
@@ -30,6 +29,7 @@ module UnderArmour
       user = args[:user]
       @token = user.access_token
       @user_id = user.ua_user_id
+      @date = args[:date]
     end
   end
 end
