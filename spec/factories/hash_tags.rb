@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :hash_tag do
     tag 'RunCHI'
     race

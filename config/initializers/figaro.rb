@@ -1,1 +1,1 @@
-Figaro.require_keys(%w(APPLICATION_ROOT_URL))
+Figaro.require_keys(%w[APPLICATION_ROOT_URL])

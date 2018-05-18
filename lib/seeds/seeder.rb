@@ -6,8 +6,10 @@ module Seeds
         clean_db
         puts 'creating users...'
         create_users
-        # puts 'creating races...'
-        # create_races
+        puts 'creating races...'
+        create_races
+        puts 'create hashtags'
+        create_hashtags
         puts 'seeding complete'
       end
 
@@ -18,11 +20,47 @@ module Seeds
       end
 
       def tables
-        %w(Tweet HashTag Workout Race User)
+        %w(HashTag Tweet Workout Race User)
       end
 
       def create_users
         User.create!(first_name: ENV['ADMIN_FIRST_NAME'], last_name: ENV['ADMIN_LAST_NAME'], email: ENV['ADMIN_EMAIL'], password: ENV['ADMIN_PASSWORD'])
+      end
+
+      def create_races
+        user = User.first
+        races = [
+          {
+            date: Date.new(2017, 5, 22),
+            name: 'Chicago 2017 Spring Half Marathon',
+            distance: '13.1 miles',
+            user: user
+          },
+          {
+            date: Date.new(2018, 5, 21),
+            name: 'Chicago 2018 Spring Half Marathon',
+            distance: '13.1 miles',
+            user: user
+          }
+        ]
+        Race.create!(races)
+      end
+
+      def create_hashtags
+        hashtags = []
+        Race.all.each do |race|
+          hashtags << [
+            {
+              tag: 'ChiSpringHalf',
+              race_id: race.id
+            },
+            {
+              tag: "#{race.date.year}ChiHalf",
+              race_id: race.id
+            }
+          ]
+        end
+        HashTag.create!(hashtags)
       end
     end
   end

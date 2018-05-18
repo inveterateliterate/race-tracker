@@ -19,11 +19,11 @@ module UnderArmour
     private
 
     def client_id
-      ENV['UA_API_KEY']
+      ENV['UA_CLIENT_ID']
     end
 
     def client_secret
-      ENV['UA_API_SECRET']
+      ENV['UA_CLIENT_SECRET']
     end
 
     def base_url
