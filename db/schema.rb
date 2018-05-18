@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_08_03_211548) do
+ActiveRecord::Schema.define(version: 2018_05_18_141809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2017_08_03_211548) do
     t.float "pace"
     t.integer "race_id"
     t.integer "tweet_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
@@ -74,5 +74,4 @@ ActiveRecord::Schema.define(version: 2017_08_03_211548) do
   add_foreign_key "races", "users"
   add_foreign_key "tweets", "races"
   add_foreign_key "tweets", "users"
-  add_foreign_key "workouts", "users"
 end
