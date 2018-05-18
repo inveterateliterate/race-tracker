@@ -1,0 +1,19 @@
+<h1>Tweets for <%= @race.name %></h1>
+
+<table class="">
+  <thead>
+    <tr>
+      <th>Tweet</th>
+      <th>Tweeted At</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.content %></td>
+        <td><%= tweet.created_at.strftime('%l/%M/%p') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

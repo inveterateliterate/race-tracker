@@ -5,6 +5,8 @@ class Race < ApplicationRecord
 
   validates_presence_of :date, :name, :distance
 
+  accepts_nested_attributes_for :hash_tags
+
   def marathon?
     distance == '26.2 miles'
   end
