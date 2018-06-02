@@ -1,0 +1,37 @@
+// Font Sizes
+
+@mixin s-giga {
+  @include rem(font-size, $s-giga);
+}
+
+@mixin s-mega {
+  @include rem(font-size, $s-mega);
+}
+
+@mixin s-huge {
+  @include rem(font-size, $s-huge);
+}
+
+@mixin s-large {
+  @include rem(font-size, $s-large);
+}
+
+@mixin s-medium {
+  @include rem(font-size, $s-medium);
+}
+
+@mixin s-base {
+  @include rem(font-size, $s-base);
+}
+
+@mixin s-small {
+  @include rem(font-size, $s-small);
+}
+
+// Font Styles
+
+@mixin font-type($type, $style, $weight) {
+  font-family: $type;
+  font-stye: $style;
+  font-weight: $weight;
+}

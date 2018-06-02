@@ -9,6 +9,7 @@ end
 gem 'bcrypt', '~> 3.1.7'
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.2'
+gem 'decanter'
 gem 'faker'
 gem 'figaro'
 gem 'httparty'

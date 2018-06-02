@@ -1,0 +1,65 @@
+// BLACK
+  $black-base: #000000;
+
+// GRAY
+  $gray-light: #A8BAC4;
+  $gray-base: #638293;
+  $gray-dark: #314B59;
+
+// BLUE
+  $blue-light: #2784E8;
+  $blue-base: #035BBA;
+  $blue-dark: #023E7F;
+// #1964B5;
+
+// PINK
+  $hot-pink: #F4A;
+
+// PURPLE
+  $purple-light: #7477E8;
+  $purple-base: #3236A8;
+  $purple-dark: #080C7F;
+
+// ORANGE
+  $orange-light: #F4AD42;
+  $orange-base: #EF9917;
+  $orange-dark: #D68204;
+
+// YELLOW
+  $yellow-light: #FCF950;
+  $yellow-base: #F9F63E;
+  $yellow-dark: #EDE910;
+
+// GREEN
+  $green-light: #2ED34A;
+  $green-base: #19B533;
+  $green-dark: #0C8E22;
+
+// WHITE
+  $white-base: #FFFFFF;
+
+  $primary-color: $gray-dark;
+// PALETTE
+  $colors: (
+    black-base    $black-base,
+    gray-light    $gray-light,
+    gray-base     $gray-base,
+    gray-dark     $gray-dark,
+    blue-light    $blue-light,
+    blue-base     $blue-base,
+    blue-dark     $blue-dark,
+    hot-pink      $hot-pink,
+    purple-light  $purple-light,
+    purple-base   $purple-base,
+    purple-dark   $purple-dark,
+    orange-light  $orange-light,
+    orange-base   $orange-base,
+    orange-dark   $orange-dark,
+    yellow-light  $yellow-light,
+    yellow-base   $yellow-base,
+    yellow-dark   $yellow-dark,
+    green-light   $green-light,
+    green-base    $green-base,
+    green-dark    $green-dark,
+    white-base    $white-base
+  );

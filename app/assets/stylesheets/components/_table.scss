@@ -1,0 +1,32 @@
+table {
+  width: 100%;
+
+  th, td {
+    display: table-cell;
+    @include rem(margin, 15px 5px);
+    @include rem(padding, 15px 10px);
+    @include s-base;
+    text-align: left;
+    white-space: nowrap;
+    width: inherit;
+    vertical-align: middle;
+
+  }
+
+  thead{
+    border-bottom: 2px solid $primary-color;
+  }
+
+  th {
+    font-weight: $bold;
+  }
+
+  a {
+    text-decoration: none;
+    font-color: $black-base;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
