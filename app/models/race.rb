@@ -7,11 +7,18 @@ class Race < ApplicationRecord
 
   accepts_nested_attributes_for :hash_tags
 
+  module Distances
+    MARATHON = '26.2 miles'
+    HALF_MARATHON = '13.1 miles'
+    TEN_K = '10 K'
+    FIVE_K = '5 K'
+  end
+
   def marathon?
-    distance == '26.2 miles'
+    distance == Distances::MARATHON
   end
 
   def half_marathon?
-    distance == '13.1 miles'
+    distance == Distances::HALF_MARATHON
   end
 end
