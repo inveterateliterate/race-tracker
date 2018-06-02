@@ -9,7 +9,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body class="<%= action_name %> <%= controller_name %>">
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,22 @@
+// GRID SETTINGS
+$neat-grid: (
+  columns: 12,
+  gutter: 20px
+);
+$grid-columns: 12;
+
+// BORDERS
+
+
+// OFFSET
+
+@mixin center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+@mixin base-padding {
+  @include rem(padding, 40px 20px);
+}

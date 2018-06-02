@@ -5,7 +5,7 @@
   <div>
     <%= f.input :name %>
     <%= f.input :date, as: :string %>
-    <%= f.input :distance %>
+    <%= f.input :distance, as: :select, collection: Race::RaceTypes::ALL.map { |type| [type[:name].capitalize, type[:distance]] } %>
   </div>
 
   <div>

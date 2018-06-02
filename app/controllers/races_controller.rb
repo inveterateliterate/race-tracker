@@ -1,6 +1,6 @@
 class RacesController < ApplicationController
   before_action :set_user, only: [:index, :new, :edit, :destroy]
-  before_action :set_race, except: [:index, :new, :create]
+  before_action :set_race, only: [:show, :edit, :update, :destroy]
 
   def index
     @races = @user.races
@@ -55,6 +55,7 @@ class RacesController < ApplicationController
   end
 
   def build_hash_tags
-    @race.hash_tags.build if @race.hash_tags.empty?
+    num_hash_tags = @race.hash_tags.count
+    (4 - num_hash_tags).times { @race.hash_tags.build }
   end
 end

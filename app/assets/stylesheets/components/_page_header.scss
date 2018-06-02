@@ -1,0 +1,11 @@
+.header-content{
+  background-color: $orange-base;
+  display: inline-block;
+  width: 100%;
+
+  .header-holder {
+    @include rem(padding, 10px 10px);
+    min-height: 70px;
+    position: relative;
+  }
+}
