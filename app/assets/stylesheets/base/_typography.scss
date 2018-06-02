@@ -1,0 +1,28 @@
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @include font-type($primary-sans-serif, normal, normal);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -mox-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-type($primary-sans-serif, normal, normal);
+  // color:
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  a{
+    @include font-type($primary-sans-serif, normal, normal);
+  }
+}

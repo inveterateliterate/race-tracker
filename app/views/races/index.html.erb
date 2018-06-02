@@ -22,7 +22,8 @@
         <td><%= race.distance %></td>
         <td><%= display_hashtags(race) %></td>
         <td><%= link_to 'Tweets', race_tweets_path(race_id: race.id) %></td>
-        <td><%= link_to 'Edit Race', edit_user_race_path(user_id: @user.id, id: race.id) %></td>
+        <td><%= link_to 'Edit', edit_user_race_path(user_id: @user.id, id: race.id) %></td>
+        <td><%= link_to 'Delete', user_race_path(user_id: @user.id, id: race.id), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

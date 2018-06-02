@@ -1,2 +1,17 @@
-@import "variables";
-@import "landing";
+@import "bourbon";
+@import "neat";
+
+// Base
+@import "base/reset";
+
+// Components
+
+
+// Layout
+
+
+// Pages
+@import "pages/home";
+
+// Utils
+@import "utils/utils";

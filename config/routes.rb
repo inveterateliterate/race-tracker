@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'races#home'
   resources :users do
-    resources :races, only: [:index, :new, :edit]
+    resources :races, only: [:index, :new, :edit, :destroy]
   end
 
   resources :races, only: [:create, :update] do
