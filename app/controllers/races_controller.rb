@@ -1,5 +1,5 @@
 class RacesController < ApplicationController
-  def index
+  def home
     render json: { data: Race.first }
   end
 end
